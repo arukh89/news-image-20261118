@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Draw the 18 November 2026 world-news poster, version 3, for make.fun.
+"""Draw the 18 November 2026 world-news poster, version 4, for make.fun.
 
 Build-time generator only: run it locally to produce entry.png, which the
 grader entrypoint (main.py, standard library only) then copies to /output.
@@ -17,8 +17,9 @@ development):
     US struck Qeshm Island; the bases named host US forces.
   2 Crimea: the Kerch bridge road arch (227 m) fell into the strait
     after Ukrainian strikes; road traffic stayed shut, rail resumed.
-  3 Shenzhen: Xi greeted Trump on arrival; a three-way summit with
-    Putin follows on Thursday; Xi spoke against protectionism.
+  3 Shenzhen: Xi met Putin at midday and greeted Trump on arrival;
+    a three-way summit follows on Thursday; Xi spoke against
+    protectionism.
   4 Alaska: Mary Peltola beat Dan Sullivan; Democrats hold the Senate
     56-44.
   5 Cyclone: Xavier reached the Northern Cook Islands as a Category 5
@@ -38,7 +39,8 @@ development):
     with about $130bn guided for the next quarter.
   12-41 (brief index): Uganda activist Mugumya charged with treachery
     in a military court; Nigeria's central bank and NNPC sign a forex
-    and energy pact; Quad leaders backing ASEAN centrality; the
+    and energy pact; Trump's Philippines trade claim, unsigned per
+    Manila; the
     coalition says 60 Houthi targets destroyed; Eisenkot's bloc vows
     a swift oust of Netanyahu; the Board of Peace faulting Israel
     and Hamas; Witkoff and Kushner due in Berlin for Ukraine talks;
@@ -47,15 +49,15 @@ development):
     Friday (IMD: 90-100 km/h gusting 110, Narsapur-Puri); the LPG
     tanker Tara Gas struck twice in the Strait of Hormuz, crew
     abandoned ship; an antibiotic-resistance warning as AMR Week
-    opens; winter relief for 96,000 flood-hit Gaza families; a
+    opens; the NSA network outage wave, ruled not cyberattacks; a
     Russian military plane crash in Siberia killing 19; Cambridge
     picking "human" as Word of the Year; California's AI safety
-    rules with shutdown power; Mozambique's Mondlane on trial;
+    rules with shutdown power; a nanobody shielding mice from three
+    coronaviruses;
     Ethiopia and Eritrea massing forces on their border; 64
     children killed in Yemen (UNICEF); Italy's anti-antisemitism
     bill passing 147-93; UK and Australian sanctions over West Bank
-    settlements; orange rain-flood warnings for Somme and
-    Pas-de-Calais; Haiti's security pact with El Salvador; a boiler
+    settlements; Russian strikes killing four in Odesa; Haiti's security pact with El Salvador; a boiler
     explosion injuring 10 at a Klabin plant in Brazil; Mexico-US
     trade talks "very far along"; Alcaraz beating Medvedev 6-2 6-4;
     Wiese banned four weeks; Zverev reaching the ATP Finals
@@ -394,7 +396,7 @@ def mini(draw, x0, y0, x1, y1, num, head_lines, deck, art):
 BRIEFS = [
     ("UGANDA ACTIVIST CHARGED", "Mugumya charged with treachery in court"),
     ("NIGERIA OIL-REVENUE PACT", "Central bank and NNPC sign forex deal"),
-    ("QUAD BACKS ASEAN", "Pact on AI, minerals, maritime security"),
+    ("TRUMP TOUTS PH DEAL", "Manila: nothing signed; talks go on"),
     ("60 HOUTHI TARGETS HIT", "Coalition says strikes hit 4 governorates"),
     ("ISRAEL BLOC VOWS OUST", "Eisenkot allies unite after Knesset talks"),
     ("BOARD OF PEACE", "Faults Israel and Hamas on truce terms"),
@@ -404,16 +406,16 @@ BRIEFS = [
     ("CYCLONE AKVAN", "Landfall due Friday; Andhra, Odisha alert"),
     ("TANKER HIT IN HORMUZ", "Struck twice; crew abandoned ship"),
     ("ANTIBIOTIC WARNING", "AMR week opens; GPs urge diagnosis first"),
-    ("GAZA WINTER RELIEF", "96,000 flood-hit families get aid kits"),
+    ("NSA NETWORK DOWN", "Officials: patching, not attacks"),
     ("SIBERIA PLANE CRASH", "Russian military plane down; 19 dead"),
     ("WORD OF THE YEAR", 'Cambridge picks "human" amid AI debate'),
     ("CALIFORNIA AI RULES", "Newsom: state standards, shutdown power"),
-    ("MOZAMBIQUE TRIAL", "Mondlane tried over 2024 protests"),
+    ("PAN-VIRUS ANTIBODY", "Shields mice from 3 coronaviruses"),
     ("ETHIOPIA-ERITREA", "Forces mass along shared border"),
     ("YEMEN'S CHILDREN", "UNICEF: 64 killed since September"),
     ("ITALY VOTES BILL", "Anti-antisemitism law passes 147-93"),
     ("SETTLEMENT SANCTIONS", "UK and Australia act over West Bank"),
-    ("FRANCE FLOOD ALERTS", "Orange warnings for Somme, Pas-de-Calais"),
+    ("ODESA STRIKES KILL 4", "Three waves hit historic centre"),
     ("HAITI SECURITY PACT", "Deal with El Salvador; 4,595 killed"),
     ("KLABIN PLANT BLAST", "Boiler explosion injures 10 in Brazil"),
     ("MEXICO TRADE TALKS", 'Sheinbaum: "very far along" with US'),
@@ -454,7 +456,7 @@ def main():
         (24, 2, "UKRAINE  \u2022  EUROPE", ["CRIMEA BRIDGE", "DOWN"],
          ["227m arch fell into", "the strait; road shut"], mini_bridge),
         (270, 3, "CHINA  \u2022  DIPLOMACY", ["TRUMP IN", "SHENZHEN"],
-         ["Xi greets him; summit", "with Putin Thursday"], mini_flags),
+         ["Xi meets Putin at noon;", "greets Trump on arrival"], mini_flags),
         (516, 4, "USA  \u2022  POLITICS", ["PELTOLA WINS", "ALASKA"],
          ["Democrats take Senate,", "56 seats to 44"], mini_capitol),
         (762, 5, "PACIFIC  \u2022  WEATHER", ["CYCLONE", "XAVIER HITS"],
