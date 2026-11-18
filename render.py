@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Draw the 18 November 2026 world-news poster, version 2, for make.fun.
+"""Draw the 18 November 2026 world-news poster, version 3, for make.fun.
 
 Build-time generator only: run it locally to produce entry.png, which the
 grader entrypoint (main.py, standard library only) then copies to /output.
@@ -10,8 +10,9 @@ picture panels, six small picture cards, a schematic world map and a
 numbered index of thirty more stories, 41 stories in all across six
 continents. Display type stays large so the page still reads small.
 
-Facts shown (all from reporting published on 18 November 2026; several
-items are 16-17 November events dominating 18 November coverage):
+Facts shown (every item has a verified 18 November 2026 hook: it happened
+on 18 Nov, was first reported on 18 Nov, or has a substantive new 18 Nov
+development):
   1 Gulf: Iran struck at Kuwait and Bahrain early on 18 Nov after the
     US struck Qeshm Island; the bases named host US forces.
   2 Crimea: the Kerch bridge road arch (227 m) fell into the strait
@@ -30,31 +31,36 @@ items are 16-17 November events dominating 18 November coverage):
     in 2027, 25bn military and 20bn budget support.
   9 Venezuela: US Defense Secretary Hegseth signed a military
     cooperation deal in Caracas with interim president Rodriguez.
-  10 Dhoni: MS Dhoni retired as an IPL player and takes a CSK mentor
-    role.
+  10 IPL: the IPL confirmed its 2027 retention lists on 18 Nov: 184
+    players kept, 89 released; Dhoni, who retired as a player on
+    17 Nov, stays at CSK as mentor.
   11 Nvidia: quarterly revenue of $115.8bn, up 103% year on year,
     with about $130bn guided for the next quarter.
-  12-41 (brief index): Ebola in Congo (UN: 11,000+ cases, 5,400
-    deaths); Iraq's Kirkuk-Ceyhan oil pipeline flowing again after 12
-    years; Quad leaders backing ASEAN centrality; Houthi drones at
-    Saudi pipeline pumps; Kahana elected Knesset speaker and Eisenkot
-    tapped to form a government; the Board of Peace faulting Israel
-    and Hamas; Putin not ready for serious Ukraine talks; APEC trade
-    lines and the US-China truce to 10 January; Myanmar reviewing
-    ASEAN ties; Cyclone Akvan nearing Andhra Pradesh; a tanker hit in
-    the Strait of Hormuz; the US losing measles-free status; cold
-    killing in Gaza tents with four nations urging aid access; a
+  12-41 (brief index): Uganda activist Mugumya charged with treachery
+    in a military court; Nigeria's central bank and NNPC sign a forex
+    and energy pact; Quad leaders backing ASEAN centrality; the
+    coalition says 60 Houthi targets destroyed; Eisenkot's bloc vows
+    a swift oust of Netanyahu; the Board of Peace faulting Israel
+    and Hamas; Witkoff and Kushner due in Berlin for Ukraine talks;
+    APEC trade lines and the US-China truce to 10 January; Myanmar
+    reviewing ASEAN ties; Cyclone Akvan, severe storm, landfall due
+    Friday (IMD: 90-100 km/h gusting 110, Narsapur-Puri); the LPG
+    tanker Tara Gas struck twice in the Strait of Hormuz, crew
+    abandoned ship; an antibiotic-resistance warning as AMR Week
+    opens; winter relief for 96,000 flood-hit Gaza families; a
     Russian military plane crash in Siberia killing 19; Cambridge
-    picking "human" as Word of the Year; US curbs on remote AI-chip
-    access; Mozambique's Mondlane on trial; Ethiopia and Eritrea
-    massing forces on their border; 64 children killed in Yemen
-    (UNICEF); Italy's anti-antisemitism bill passing 147-93; UK and
-    Australian sanctions over West Bank settlements; storms Bruna and
-    Charles over Portugal and Madeira; Haiti's security pact with El
-    Salvador; a C-130 for Colombia; Mexico-US trade talks "very far
-    along"; India's 10th SAFF title; Nations League results; Zverev
-    reaching the ATP Finals knockouts; Revolution Wind at full power;
-    Australia's first new steel mill in 40 years, fossil-free.
+    picking "human" as Word of the Year; California's AI safety
+    rules with shutdown power; Mozambique's Mondlane on trial;
+    Ethiopia and Eritrea massing forces on their border; 64
+    children killed in Yemen (UNICEF); Italy's anti-antisemitism
+    bill passing 147-93; UK and Australian sanctions over West Bank
+    settlements; orange rain-flood warnings for Somme and
+    Pas-de-Calais; Haiti's security pact with El Salvador; a boiler
+    explosion injuring 10 at a Klabin plant in Brazil; Mexico-US
+    trade talks "very far along"; Alcaraz beating Medvedev 6-2 6-4;
+    Wiese banned four weeks; Zverev reaching the ATP Finals
+    knockouts; ACME Solar's 150 MW hybrid PPA with NTPC;
+    Australia's gender pay gap below 20% for the first time.
 """
 
 import math
@@ -283,7 +289,7 @@ def mini_venezuela(draw, x0, y0, x1, y1):
         draw.ellipse([sx - 2, y0 + 13, sx + 2, y0 + 17], fill=WHITE)
 
 
-def mini_dhoni(draw, x0, y0, x1, y1):
+def mini_cricket(draw, x0, y0, x1, y1):
     draw.rectangle([x0, y0, x1, y1], fill=(52, 130, 70))
     draw.rectangle([x0 + 18, y0 + 4, x0 + 128, y0 + 28], fill=(200, 180, 140))
     for sx in (x0 + 30, x0 + 36, x0 + 42):
@@ -313,23 +319,44 @@ def world_map(draw, x0, y0, x1, y1):
     def poly(fracs):
         draw.polygon([(x0 + fx * w, y0 + fy * h) for fx, fy in fracs], fill=LAND)
 
-    poly([(0.03, 0.08), (0.16, 0.05), (0.26, 0.12), (0.24, 0.30), (0.18, 0.45),
-          (0.12, 0.52), (0.06, 0.40), (0.02, 0.22)])
-    poly([(0.24, 0.52), (0.32, 0.50), (0.35, 0.62), (0.31, 0.85), (0.27, 0.95), (0.24, 0.75)])
-    poly([(0.46, 0.10), (0.55, 0.08), (0.58, 0.20), (0.54, 0.32), (0.47, 0.30), (0.45, 0.18)])
-    poly([(0.46, 0.35), (0.56, 0.33), (0.60, 0.45), (0.57, 0.68), (0.52, 0.85),
-          (0.48, 0.65), (0.45, 0.48)])
-    poly([(0.58, 0.08), (0.75, 0.05), (0.92, 0.12), (0.96, 0.28), (0.88, 0.45),
-          (0.78, 0.55), (0.66, 0.50), (0.58, 0.35)])
-    poly([(0.86, 0.68), (0.94, 0.66), (0.96, 0.78), (0.90, 0.88), (0.85, 0.80)])
+    # North America: Alaska bump, Hudson Bay bite, Mexico taper.
+    poly([(0.02, 0.10), (0.05, 0.05), (0.10, 0.03), (0.16, 0.04), (0.21, 0.07),
+          (0.25, 0.13), (0.26, 0.21), (0.23, 0.27), (0.20, 0.35), (0.175, 0.43),
+          (0.15, 0.51), (0.125, 0.46), (0.11, 0.37), (0.07, 0.34), (0.03, 0.26),
+          (0.02, 0.18)])
+    # Greenland.
+    poly([(0.275, 0.05), (0.31, 0.04), (0.325, 0.10), (0.30, 0.16), (0.275, 0.12)])
+    # South America: Brazil bulge, tapering tail.
+    poly([(0.25, 0.52), (0.29, 0.49), (0.335, 0.53), (0.36, 0.61), (0.345, 0.71),
+          (0.315, 0.83), (0.295, 0.94), (0.275, 0.88), (0.26, 0.74), (0.24, 0.62)])
+    # Europe with Britain offshore.
+    poly([(0.45, 0.13), (0.475, 0.08), (0.52, 0.07), (0.56, 0.12), (0.575, 0.20),
+          (0.565, 0.28), (0.55, 0.35), (0.52, 0.37), (0.49, 0.33), (0.46, 0.26),
+          (0.445, 0.19)])
+    poly([(0.435, 0.13), (0.455, 0.11), (0.465, 0.17), (0.45, 0.22), (0.435, 0.18)])
+    # Africa: west bulge and the Horn.
+    poly([(0.455, 0.39), (0.49, 0.355), (0.545, 0.355), (0.585, 0.40), (0.605, 0.45),
+          (0.595, 0.53), (0.575, 0.62), (0.56, 0.74), (0.535, 0.86), (0.51, 0.87),
+          (0.495, 0.72), (0.475, 0.58), (0.45, 0.47)])
+    # Asia: Turkey bump, Arabia, India triangle, SE Asia.
+    poly([(0.545, 0.22), (0.548, 0.30), (0.552, 0.37), (0.568, 0.425), (0.59, 0.44),
+          (0.605, 0.50), (0.62, 0.56), (0.64, 0.53), (0.655, 0.47), (0.675, 0.45),
+          (0.69, 0.52), (0.705, 0.59), (0.725, 0.55), (0.745, 0.52), (0.775, 0.55),
+          (0.80, 0.58), (0.83, 0.52), (0.86, 0.44), (0.92, 0.36), (0.96, 0.26),
+          (0.95, 0.14), (0.88, 0.07), (0.75, 0.04), (0.63, 0.06), (0.56, 0.10),
+          (0.55, 0.16)])
+    # Australia and New Zealand.
+    poly([(0.855, 0.70), (0.895, 0.665), (0.94, 0.68), (0.96, 0.76), (0.935, 0.85),
+          (0.89, 0.87), (0.855, 0.79)])
+    poly([(0.968, 0.79), (0.978, 0.77), (0.983, 0.85), (0.973, 0.88)])
     lab = font(SANS_BOLD, 10)
     for text, fx, fy in (("N. AMERICA", 0.04, 0.33), ("S. AMERICA", 0.225, 0.82),
                          ("EUROPE", 0.455, 0.13), ("AFRICA", 0.485, 0.56),
                          ("ASIA", 0.75, 0.28), ("OCEANIA", 0.85, 0.78)):
         draw.text((x0 + fx * w, y0 + fy * h), text, font=lab, fill=(60, 80, 60))
     numf = font(SANS_BOLD, 10)
-    for n, fx, fy in ((1, 0.625, 0.47), (2, 0.55, 0.30), (3, 0.80, 0.55), (4, 0.08, 0.18),
-                      (5, 0.95, 0.85), (7, 0.57, 0.42), (8, 0.52, 0.34), (9, 0.285, 0.65),
+    for n, fx, fy in ((1, 0.625, 0.47), (2, 0.555, 0.27), (3, 0.80, 0.55), (4, 0.08, 0.18),
+                      (5, 0.95, 0.85), (7, 0.595, 0.44), (8, 0.52, 0.34), (9, 0.285, 0.65),
                       (10, 0.705, 0.50), (11, 0.155, 0.44)):
         px, py = x0 + fx * w, y0 + fy * h
         draw.ellipse([px - 9, py - 9, px + 9, py + 9], fill=RED, outline=WHITE, width=1)
@@ -365,36 +392,36 @@ def mini(draw, x0, y0, x1, y1, num, head_lines, deck, art):
 
 
 BRIEFS = [
-    ("EBOLA IN CONGO", "UN: 11,000+ cases, 5,400 deaths"),
-    ("IRAQ OIL FLOWS AGAIN", "Kirkuk-Ceyhan line back after 12 years"),
+    ("UGANDA ACTIVIST CHARGED", "Mugumya charged with treachery in court"),
+    ("NIGERIA OIL-REVENUE PACT", "Central bank and NNPC sign forex deal"),
     ("QUAD BACKS ASEAN", "Pact on AI, minerals, maritime security"),
-    ("HOUTHI DRONES", "5 drones sent at Saudi pipeline pumps"),
-    ("ISRAEL'S NEW SPEAKER", "Kahana elected; Eisenkot to form government"),
+    ("60 HOUTHI TARGETS HIT", "Coalition says strikes hit 4 governorates"),
+    ("ISRAEL BLOC VOWS OUST", "Eisenkot allies unite after Knesset talks"),
     ("BOARD OF PEACE", "Faults Israel and Hamas on truce terms"),
-    ("PUTIN ON UKRAINE TALKS", "Not ready for serious negotiations"),
+    ("BERLIN UKRAINE TALKS", "Witkoff, Kushner due Thursday for talks"),
     ("APEC TRADE LINES", "Xi hits protectionism; truce to Jan 10"),
     ("MYANMAR REVIEWS ASEAN", 'Junta chief cites "unfair treatment"'),
-    ("CYCLONE AKVAN", "Landfall due Friday on Andhra coast"),
-    ("TANKER HIT IN HORMUZ", "Crew member missing after strike"),
-    ("MEASLES STATUS LOST", "US: 5,400+ cases, 10 deaths"),
-    ("GAZA'S COLD", "Deaths in tents; 4 nations urge aid access"),
+    ("CYCLONE AKVAN", "Landfall due Friday; Andhra, Odisha alert"),
+    ("TANKER HIT IN HORMUZ", "Struck twice; crew abandoned ship"),
+    ("ANTIBIOTIC WARNING", "AMR week opens; GPs urge diagnosis first"),
+    ("GAZA WINTER RELIEF", "96,000 flood-hit families get aid kits"),
     ("SIBERIA PLANE CRASH", "Russian military plane down; 19 dead"),
     ("WORD OF THE YEAR", 'Cambridge picks "human" amid AI debate'),
-    ("AI CHIP CURBS", "US limits remote access; China objects"),
+    ("CALIFORNIA AI RULES", "Newsom: state standards, shutdown power"),
     ("MOZAMBIQUE TRIAL", "Mondlane tried over 2024 protests"),
     ("ETHIOPIA-ERITREA", "Forces mass along shared border"),
     ("YEMEN'S CHILDREN", "UNICEF: 64 killed since September"),
     ("ITALY VOTES BILL", "Anti-antisemitism law passes 147-93"),
     ("SETTLEMENT SANCTIONS", "UK and Australia act over West Bank"),
-    ("STORMS HIT IBERIA", "Bruna and Charles bring record rain"),
+    ("FRANCE FLOOD ALERTS", "Orange warnings for Somme, Pas-de-Calais"),
     ("HAITI SECURITY PACT", "Deal with El Salvador; 4,595 killed"),
-    ("COLOMBIA AID", "Hegseth delivers C-130 Hercules"),
+    ("KLABIN PLANT BLAST", "Boiler explosion injures 10 in Brazil"),
     ("MEXICO TRADE TALKS", 'Sheinbaum: "very far along" with US'),
-    ("INDIA'S 10TH SAFF TITLE", "India beat Pakistan 2-1 in final"),
-    ("NATIONS LEAGUE", "Portugal, Norway advance; Germany 5-0"),
+    ("ALCARAZ BEATS MEDVEDEV", "6-2 6-4 in Turin; near ATP semis"),
+    ("WIESE BANNED 4 WEEKS", "Springbok No. 8 out after red card"),
     ("ZVEREV ADVANCES", "Into ATP Finals knockouts in Turin"),
-    ("WIND AT FULL POWER", "Revolution Wind: 704 MW, 65 turbines"),
-    ("FOSSIL-FREE STEEL", "Australia's first new mill in 40 years"),
+    ("SOLAR PPA SIGNED", "ACME-NTPC 150 MW hybrid deal, from 2028"),
+    ("PAY GAP UNDER 20%", "Australia: 19.7%, first time below 20%"),
 ]
 
 
@@ -442,7 +469,7 @@ def main():
         (188, 7, ["COP31 TALKS", "DEADLOCKED"], "Draft gaps; ends Friday", mini_cop),
         (352, 8, ["EU OFFERS", "UKRAINE \u20ac45BN"], "\u20ac25bn arms + \u20ac20bn aid", mini_eu),
         (516, 9, ["HEGSETH SIGNS", "CARACAS PACT"], "US military deal signed", mini_venezuela),
-        (680, 10, ["DHONI RETIRES", "FROM IPL"], "Takes CSK mentor role", mini_dhoni),
+        (680, 10, ["IPL LISTS", "CONFIRMED"], "184 kept, 89 released", mini_cricket),
         (844, 11, ["NVIDIA SALES", "DOUBLE"], "$115.8bn; $130bn guided", mini_chip),
     ]
     for x0, num, head_lines, deck_line, art in minis:
@@ -454,7 +481,7 @@ def main():
     # Numbered brief index: thirty more stories in three columns.
     draw.text((24, 704), "THE REST OF THE DAY \u2014 30 MORE STORIES",
               font=font(SANS_BOLD, 16), fill=INK)
-    src = "SOURCES: AP, REUTERS, AFP, UN NEWS, NASA, IMD, UKMTO, METSERVICE, CAMBRIDGE, CSK, EC, CPJ, UNICEF, BIS"
+    src = "SOURCES: AP, REUTERS, AFP, UN NEWS, NASA, IMD, UKMTO, IPL, EC, UNICEF, WGEA"
     srcf = font(SANS, 10)
     draw.text((1000 - text_w(draw, src, srcf), 708), src, font=srcf, fill=GREY)
     draw.line([(24, 726), (1000, 726)], fill=INK, width=2)

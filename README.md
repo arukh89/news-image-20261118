@@ -4,7 +4,7 @@
 [![rank](https://make.fun/badge/news-image-20261118/arukh89/news-image-20261118/rank.svg)](https://make.fun/bounty/news-image-20261118/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261118)
 [![reward](https://make.fun/badge/news-image-20261118/arukh89/news-image-20261118/reward.svg)](https://make.fun/bounty/news-image-20261118?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261118)
 
-One image summing up the world news of Wednesday 18 November 2026: 41 stories across six continents — a lead story on the Gulf strikes, picture panels for the fallen Crimea bridge span, the Shenzhen summit, the Alaska Senate result and Cyclone Xavier, six small picture cards (Voyager 1, the COP31 talks, the EU's Ukraine loan, the Caracas pact, Dhoni's retirement, Nvidia's results), a schematic world map, and a numbered index of 30 more stories. Every shape and letter is drawn from code; no photograph or downloaded artwork is used.
+One image summing up the world news of Wednesday 18 November 2026: 41 stories across six continents — a lead story on the Gulf strikes, picture panels for the fallen Crimea bridge span, the Shenzhen summit, the Alaska Senate result and Cyclone Xavier, six small picture cards (Voyager 1, the COP31 talks, the EU's Ukraine loan, the Caracas pact, the IPL retention lists, Nvidia's results), a schematic world map, and a numbered index of 30 more stories. Every shape and letter is drawn from code; no photograph or downloaded artwork is used.
 
 ## Run it
 
